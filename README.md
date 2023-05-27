@@ -40,3 +40,26 @@ Database user: nextcloud
 Database password: strongsqluserpassword
 Database name: nextcloud
 Database host: localhost(Default)
+  
+Access from another device:
+
+Allow Port 80
+```sh
+sudo ufw status
+sudo ufw enable
+sudo ufw allow 80
+sudo ufw status
+```
+Set Trusted domain:
+```sh
+sudo vi var/www/html/nextcloud/config/config.php
+```
+Add lines:
+```
+'trusted_domains' =>
+array (
+  0 => 'localhost',
+  1 => 'example.com',
+  2 => '192.168.0.100', // Replace with your local IP address
+),
+```
